@@ -15,13 +15,9 @@ public class Movement : MonoBehaviour
         Move();
     }
 
-
-
     void Update()
     {
-
         ProccesInputs();
-        
     }
 
 
@@ -30,15 +26,11 @@ public class Movement : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical");
 
         moveDirection = new Vector2(moveX, moveY).normalized;
-
-
     }
 
     void Move()
     {
-        
         rigidbody.linearVelocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
-
     }
 
 
