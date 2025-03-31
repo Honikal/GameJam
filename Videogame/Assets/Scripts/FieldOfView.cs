@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using CodeMonkey.Utils;
 using System.IO;
 
-public class FielldOfView : MonoBehaviour
+public class FieldOfView : MonoBehaviour
 {
     [SerializeField] private LayerMask layerMask;
     private Mesh mesh;
@@ -23,7 +23,7 @@ public class FielldOfView : MonoBehaviour
         
     
     float fov = 360f;
-        int rayCount = 50;
+        int rayCount = 80;
         float angle = 0f;
         float angleIncrease = fov / rayCount;
         float viewDistance = 15f;
