@@ -1,8 +1,8 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-
     //Creamos la instancia de singleton
     public static AudioManager Instance { get; private set; }
 
@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     {
         //Pasamos el sonidoque va a ser serializabele o modificable en el sistema
         public string name;                             //Nombre del sonido (para referencia sencilla)
+        public AudioMixerGroup output;                  //Audiomixer o grupo de salida
         public AudioClip clip;                          //El clip o audio a reproducir
         [Range(0f, 1f)] public float volume = 1f;       //Volumen del sonido
         [Range(0.1f, 3f)] public float pitch = 1f;      //Pitch del sonido
@@ -44,6 +45,7 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = s.output; 
         }
     }
 
@@ -87,5 +89,6 @@ public class AudioManager : MonoBehaviour
         Sound s = GetSoundByName(name);
         s.source.volume = volume;
     }
+
 
 }
