@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -11,11 +12,11 @@ TagManager:
   - 
   - Water
   - UI
+  - Enemy
+  - Player
   - 
-  - 
-  - 
-  - 
-  - 
+  - Obstacle
+  - Node
   - 
   - 
   - 
@@ -52,6 +53,9 @@ TagManager:
     locked: 0
   - name: Decoration
     uniqueID: 2875381605
+    locked: 0
+  - name: Node
+    uniqueID: 2535278639
     locked: 0
   m_RenderingLayers:
   - Default

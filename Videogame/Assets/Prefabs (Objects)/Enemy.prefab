@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 8628249780567167007}
   - component: {fileID: 7988540538600058111}
   - component: {fileID: 1977377223647272121}
-  m_Layer: 7
+  - component: {fileID: 6372408935889576076}
+  - component: {fileID: 5217904053448533427}
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,5 +214,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47392bc73e7548f47bda5b67d0a2b717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
   areaCheckPlayer: {fileID: 0}
+  moveSpeed: 2
+  chaseRange: 5
+  waypointReachDistance: 0.5
+  obstacleCheckDistance: 1
+  detectionRadius: 10
+  pathRecalculationTime: 2
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &6372408935889576076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340432702483158221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee3d1225a4c91d4080a9ec81c84da54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaCheckPlayer: {fileID: 0}
+  moveSpeed: 0
+  chaseRange: 5
+  waypointReachDistance: 0.5
+  obstacleCheckDistance: 1
+  detectionRadius: 10
+  pathRecalculationTime: 2
+  waypoints: []
+--- !u!114 &5217904053448533427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340432702483158221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1345bcf229001d4b8f050becabb002c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
