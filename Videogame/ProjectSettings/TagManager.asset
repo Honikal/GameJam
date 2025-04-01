@@ -41,8 +41,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer 1
+  - name: Ground
     uniqueID: 4228834311
+    locked: 0
+  - name: Player
+    uniqueID: 914689597
+    locked: 0
+  - name: Collisions
+    uniqueID: 1132152609
+    locked: 0
+  - name: Decorations
+    uniqueID: 556121125
     locked: 0
   m_RenderingLayers:
   - Default
