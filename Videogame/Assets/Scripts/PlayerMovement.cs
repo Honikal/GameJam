@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 
+    [SerializeField] private FieldOfView fieldOfView;
     public float moveSpeed; 
     public Rigidbody2D rigidbody;
 
@@ -17,6 +18,8 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        fieldOfView.SetOrigin(transform.position);
+
         ProccesInputs();
     }
 

@@ -13,11 +13,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Mask
+  - BehindMask
+  - Objects
+  - Black
+  - mejr
   - 
   - 
   - 
@@ -41,17 +41,8 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Ground
-    uniqueID: 3604843499
-    locked: 0
-  - name: Collision
-    uniqueID: 4168664217
-    locked: 0
-  - name: Player
-    uniqueID: 252517473
-    locked: 0
-  - name: Decoration
-    uniqueID: 2875381605
+  - name: New Layer 1
+    uniqueID: 4228834311
     locked: 0
   m_RenderingLayers:
   - Default
