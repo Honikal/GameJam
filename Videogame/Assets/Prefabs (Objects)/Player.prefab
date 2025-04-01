@@ -306,8 +306,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16f981c82bd3c945acfe5d4752e3857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sanity: 100
+  health: 100
   moveSpeed: 10
   rigidbody: {fileID: 5978010563682536438}
+  circulo_0: {fileID: 1460747948943327429}
 --- !u!61 &5835792199575083647
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -395,8 +398,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 914689597
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 2712090704800160770, guid: ce1f438903a2b8e4db9551c30a61471d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -27,29 +27,6 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverScreen;
     public TMP_Text scoreGameOver;
 
-    //Modificamos las propiedades de vida y puntaje para activar eventos
-    private int _insanity;
-    public int insanity     //Porcentaje de sanidad o mantener la visión encendida
-    {
-        get => _insanity;
-        set
-        {
-            _insanity = value;
-            OnInsanityChanged?.Invoke(_insanity); //Trigger cuando el puntaje cambie
-        }
-    }
-
-    private int _health;    //Porcentaje de vida actual del jugador
-    public int health
-    {
-        get => _health;
-        set
-        {
-            _health = value;
-            OnHealthChanged?.Invoke(_health); //Trigger cuando la vida cambie
-        }
-    }
-
     private int _time;      //Tiempo de duración de la partida
     public int time
     {

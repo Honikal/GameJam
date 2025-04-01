@@ -104,8 +104,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 252517473
-  m_SortingLayer: 3
+  m_SortingLayerID: 914689597
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 808ecb35fa5efb64593a862024b285b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -212,5 +212,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47392bc73e7548f47bda5b67d0a2b717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
   areaCheckPlayer: {fileID: 0}
+  moveSpeed: 4
+  chaseRange: 5
+  waypointReachDistance: 0.5
+  obstacleCheckDistance: 1
+  detectionRadius: 10
+  pathRecalculationTime: 2
+  waypoints: []
