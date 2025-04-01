@@ -709,6 +709,10 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[5]'
       value: 
       objectReference: {fileID: 1480445815}
+    - target: {fileID: 4300082256192394515, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5217904053448533427, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
       propertyPath: speed
       value: 4
