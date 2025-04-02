@@ -1,15 +1,43 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-
+[RequireComponent(typeof(Enemy))]
 public class EnemyMovement : MonoBehaviour
 {
+    
     //Manejamos una serie de estados para el monstruo (Idle Movement, Chase Movement)
     enum State { Patrolling, Chase };
     private State currentState;
     public CircleCollider2D areaCheckPlayer;
 
+    public Enemy enemy { get; private set; }
 
+    private void Awake()
+    {
+        this.enemy = GetComponent<Enemy>();
+        this.enabled = false;
+    }
+
+    /*public void Enable()
+    {
+        Enable(this.duration);
+    }*/
+
+    public virtual void Enable()
+    {
+        this.enabled = true;
+
+        //CancelInvoke();
+        //Invoke(nameof(Disable), 0);
+    }
+
+    public virtual void Disable()
+    {
+        this.enabled = false;
+        CancelInvoke();
+    }
+
+    /*
     //Tenemos acceso al objeto al que el jugador intentará perseguir
     [Header("Sistema de Movimiento")]
     public float moveSpeed;                     //Manejamos la velocidad del monstruo 
@@ -80,7 +108,7 @@ public class EnemyMovement : MonoBehaviour
         }
 
     }
-    */
+    
 
 
     private void PatrolBehavior()
@@ -154,7 +182,7 @@ public class EnemyMovement : MonoBehaviour
 
         currentWaypointIndex = newIndex;
     }
-    */
+    
 
 
     private void ChaseBehavior()
@@ -205,7 +233,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
     }
-    */
+    
 
 
     private void OnDrawGizmos()
@@ -239,5 +267,5 @@ public class EnemyMovement : MonoBehaviour
             }
         }
     }
-
+    */
 }

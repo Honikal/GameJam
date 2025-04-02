@@ -1624,49 +1624,9 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 1977377223647272121, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
-      propertyPath: moveSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1977377223647272121, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
-      propertyPath: areaCheckPlayer
-      value: 
-      objectReference: {fileID: 1900412105}
-    - target: {fileID: 1977377223647272121, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
-      propertyPath: waypoints.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1977377223647272121, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
-      propertyPath: 'waypoints.Array.data[0]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1977377223647272121, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
-      propertyPath: 'waypoints.Array.data[1]'
-      value: 
-      objectReference: {fileID: 1422915231}
-    - target: {fileID: 1977377223647272121, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
-      propertyPath: 'waypoints.Array.data[2]'
-      value: 
-      objectReference: {fileID: 1503050095}
-    - target: {fileID: 1977377223647272121, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
-      propertyPath: 'waypoints.Array.data[3]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1977377223647272121, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
-      propertyPath: 'waypoints.Array.data[4]'
-      value: 
-      objectReference: {fileID: 1607920980}
-    - target: {fileID: 1977377223647272121, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
-      propertyPath: 'waypoints.Array.data[5]'
-      value: 
-      objectReference: {fileID: 1480445815}
-    - target: {fileID: 3847823508515357018, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3847823508515357018, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 914689597
+    - target: {fileID: 4300082256192394515, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7508334456804259803, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1713,11 +1673,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
---- !u!58 &1900412105 stripped
-CircleCollider2D:
-  m_CorrespondingSourceObject: {fileID: 7988540538600058111, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
-  m_PrefabInstance: {fileID: 1900412104}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1906698180
 GameObject:
   m_ObjectHideFlags: 0
