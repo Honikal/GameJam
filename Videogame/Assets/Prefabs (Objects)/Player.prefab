@@ -307,11 +307,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16f981c82bd3c945acfe5d4752e3857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSanity: 100
+  maxClosedEyes: 100
   maxHealth: 100
-  eyesClosedDuration: 20
+  eyesClosedCooldown: 3
   healthDuration: 5
-  SanityBar: {fileID: 0}
+  timerValue: {fileID: 0}
+  EyesBar: {fileID: 0}
   HealthBar: {fileID: 0}
   circulo_0: {fileID: 1460747948943327429}
   moveSpeed: 10

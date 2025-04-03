@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using static UnityEngine.Rendering.DebugUI;
+using NUnit.Framework;
+using System.Collections.Generic;
 
 public class Movement : MonoBehaviour
 { 
@@ -25,17 +27,23 @@ public class Movement : MonoBehaviour
     [SerializeField] private GameObject circulo_0; // The child circle to toggle
     public float moveSpeed;
 
+    [Header("Configuraciones de visión")]
+    [SerializeField] LayerMask obstacleLayers;
+    [SerializeField] float visionCheckInterval = 0.2f; //Tiempo de intervalos para checkar los posibles enemigo en el área
+
     private float currentClosedEyes = 100f;
     private float currentHealth = 100f;
     private float closeEyesRate;
     private float healthDrainRate;
-    private float cooldownTimer = 0f;
+    private float cooldownTimer;
+    private float visionCheckTimer;       //Timer para definir o checar a cada cierto tiempo la posible existencia de un enemigo en el área
     private Rigidbody2D rb;
     private CircleCollider2D visionTrigger;
     private bool isEyesClosed = false;
     private bool isMonsterInSight = false;
     private bool isCooldownActive = false;
     private Vector2 moveDirection;
+    private List<Transform> enemiesInRange = new List<Transform>();  //Lista de enemigos posibles
 
 
     private void Start()
@@ -56,6 +64,7 @@ public class Movement : MonoBehaviour
         ProccesInputs();
         HandleEyeTimer();
         HandleCooldown();
+        UpdateVisionCheck();
         HandleHealth();
         UpdateUI();
     }
@@ -64,7 +73,6 @@ public class Movement : MonoBehaviour
     {
         Move();
     }
-
 
     void ProccesInputs() {
         //Manejamos el input de movimiento
@@ -194,13 +202,58 @@ public class Movement : MonoBehaviour
         }
     }
 
+
+    //Update Vision Check
+    private void UpdateVisionCheck()
+    {
+        //Acá llamamos a ésta función para cada cierto tiempo checar que exista un enemigo en el punto de visión del jugador
+        visionCheckTimer += Time.deltaTime;
+        if (visionCheckTimer >= visionCheckInterval)
+        {
+            visionCheckTimer = 0;
+            //Llamamos la función encargada de buscar existencia del enemigo
+            isMonsterInSight = HasClearLineOfSight();
+        }
+    }
+
+    private bool HasClearLineOfSight()
+    {
+        //Ésta función se encarga de iterar todos los posibles enemigos, checamos que estén en el rango de visión
+        foreach (Transform enemy in enemiesInRange)
+        {
+            if (enemy == null) continue;
+
+            //Tomamos un vector con el cual se vea la dirección entre el jugador y el enemigo
+            Vector2 dirToEnemy = (enemy.position - transform.position).normalized;
+            //Con base a dicho vector, tomamos la distancia que separa al jugador del enemigo
+            float distance = Vector2.Distance(transform.position, enemy.position);
+
+            //Usamos el Raycast, para un Raycast,
+            //ocupamos la ubicación del objeto que castea el rayo, la dirección del posible vector (rayo), la distancia, y los posibles obstáculos
+            RaycastHit2D hit = Physics2D.Raycast(
+                transform.position, //origin,
+                dirToEnemy,         //direction,
+                distance,           //distance,
+                obstacleLayers      //layerMask
+            );
+
+            //Checamos que el punto no tenga colisiones posibles, o que el posible punto de collisión sea el enemigo
+            if (hit.collider == null || hit.collider.CompareTag("Enemy")) {
+                return true;
+            }
+
+        }
+        return false;
+    }
+
     //El monstruo entra en el área de visibilidad del jugador
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Primero checamos que el valor con el que chocamos es el monstruo
         if (collision.CompareTag("Enemy"))
         {
-            isMonsterInSight = true;
+            //Agregamos el enemigo a la lista de objetos por checar
+            enemiesInRange.Add(collision.transform);
         }
     }
 
@@ -210,10 +263,9 @@ public class Movement : MonoBehaviour
         //Primero checamos que el monstruo haya salido del área
         if (collision.CompareTag("Enemy"))
         {
-            isMonsterInSight = false;
+            //El posible enemigo salió del rango, lo quitamos del área
+            enemiesInRange.Remove(collision.transform);
         }
     }
-
-
 
 } 
