@@ -3,7 +3,6 @@ using UnityEngine;
 public class HealthPickup : MonoBehaviour
 {
     [SerializeField] float healthAmount = 20f; // Amount of health to restore
-    [SerializeField] AudioClip pickupSound; // Optional sound effect
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,15 +13,16 @@ public class HealthPickup : MonoBehaviour
             
             if (playerMovement != null)
             {
+                Debug.Log("Se encontró al jugador, añadiendo vida:");
+
                 // Restore health (you'll need to add a public method in Movement)
                 playerMovement.IncreaseHealth(healthAmount);
-                
+
                 // Play sound if available
-                if (pickupSound != null)
-                {
-                    AudioSource.PlayClipAtPoint(pickupSound, transform.position);
-                }
-                
+                //AudioManager.Instance.Play("HealthPickup");
+
+
+                Debug.Log("Destruyendo pickup");
                 // Destroy the pickup
                 Destroy(gameObject);
             }

@@ -171,7 +171,7 @@ public class Movement : MonoBehaviour
         float normalizedSight = currentClosedEyes / maxClosedEyes;
         float normalizedHealth = currentHealth / maxHealth;
 
-        Debug.Log($"Tamaño a pintar del campo de salud: {normalizedHealth}");
+        //Debug.Log($"Tamaño a pintar del campo de salud: {normalizedHealth}");
         EyesBar.fillAmount = normalizedSight;
         HealthBar.fillAmount = normalizedHealth;
 
