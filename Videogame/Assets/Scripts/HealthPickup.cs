@@ -13,7 +13,7 @@ public class HealthPickup : MonoBehaviour
             
             if (playerMovement != null)
             {
-                Debug.Log("Se encontró al jugador, añadiendo vida:");
+                Debug.Log("Se encontrï¿½ al jugador, aï¿½adiendo vida:");
 
                 // Restore health (you'll need to add a public method in Movement)
                 playerMovement.IncreaseHealth(healthAmount);
