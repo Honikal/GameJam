@@ -2974,6 +2974,13 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: HealthPickup
+    output: {fileID: -4049995715818578261, guid: 7a54fc3a8a348ad46b0e2c9c1d5b860e, type: 2}
+    clip: {fileID: 8300000, guid: 8bdabba0bfde8af4a81c418bbf94c9de, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &1198903756
 GameObject:
   m_ObjectHideFlags: 0
