@@ -39,9 +39,9 @@ public class Movement : MonoBehaviour
     private float visionCheckTimer;       //Timer para definir o checar a cada cierto tiempo la posible existencia de un enemigo en el área
     private Rigidbody2D rb;
     private CircleCollider2D visionTrigger;
-    private bool isEyesClosed = false;
-    private bool isMonsterInSight = false;
-    private bool isCooldownActive = false;
+    private bool isEyesClosed { get; set; } = false;
+    private bool isMonsterInSight { get; set; } = false;
+    private bool isCooldownActive { get; set; } = false;
     private Vector2 moveDirection;
     private List<Transform> enemiesInRange = new List<Transform>();  //Lista de enemigos posibles
 
@@ -107,6 +107,7 @@ public class Movement : MonoBehaviour
             Debug.Log("Ojos abiertos");
         }
     }
+
 
     void Move()
     {

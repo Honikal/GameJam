@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7155202713473063630}
   - component: {fileID: 5287338476642418602}
   - component: {fileID: 4313667674673179450}
+  - component: {fileID: 8692361191857534925}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -214,12 +215,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1345bcf229001d4b8f050becabb002c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 8665630673403886952, guid: fdb955e49d04f9941b93b1c38213cd9b, type: 3}
   initialPosition: {x: 0, y: 0}
-  target: {fileID: 0}
   initialDirection: {x: 0, y: 0}
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+  detectionCollider: {fileID: 7988540538600058111}
   speed: 8
   speedMultiplier: 1
 --- !u!114 &5287338476642418602
@@ -245,6 +247,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84cd5c79529e05b468ce9cdc7c2e639e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaCheckPlayer: {fileID: 0}
+--- !u!114 &8692361191857534925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340432702483158221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 826cdbe549d19ea478c0c339a38417ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   areaCheckPlayer: {fileID: 0}
