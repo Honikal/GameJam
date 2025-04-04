@@ -35,14 +35,13 @@ public class TorchManager : MonoBehaviour
         }
     }
 
-    // This is the method you're trying to call
     public void TorchStateChanged(bool isLit)
     {
         litTorches += isLit ? 1 : -1;
         litTorches = Mathf.Clamp(litTorches, 0, totalTorches);
         UpdateUI();
         
-        if (litTorches == totalTorches && totalTorches > 0)
+        if (AllTorchesAreLit)
         {
             AllTorchesLit();
         }
@@ -57,9 +56,7 @@ public class TorchManager : MonoBehaviour
 
         if (completionIndicator != null)
         {
-            completionIndicator.color = (litTorches >= totalTorches && totalTorches > 0) 
-                ? completeColor 
-                : incompleteColor;
+            completionIndicator.color = AllTorchesAreLit ? completeColor : incompleteColor;
         }
 
         onTorchCountChanged?.Invoke(litTorches);
@@ -67,7 +64,7 @@ public class TorchManager : MonoBehaviour
 
     private void AllTorchesLit()
     {
-        Debug.Log($"All {totalTorches} torches are lit!");
+        Debug.Log("YOU WIN! All torches are lit!");
         onAllTorchesLit?.Invoke();
     }
 
@@ -82,7 +79,7 @@ public class TorchManager : MonoBehaviour
         totalTorches = Mathf.Max(0, totalTorches - 1);
         if (wasLit)
         {
-            TorchStateChanged(false);
+            litTorches--;
         }
         UpdateUI();
     }

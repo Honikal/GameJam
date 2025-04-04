@@ -4,7 +4,7 @@ public class Antorcha : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform playerTransform;
-    [SerializeField] private GameObject circulo_0; // Drag the child object here
+    [SerializeField] private GameObject circulo_0;
 
     [Header("Visual Effects")]
     [SerializeField] private Light torchLight;
@@ -19,17 +19,27 @@ public class Antorcha : MonoBehaviour
 
     private bool isLit;
 
-    private void Awake()
+    private void Start()
     {
-        // If circulo_0 isn't assigned, try to find it automatically
+        // Register this torch with the manager
+        TorchManager.Instance?.RegisterTorch();
+        
+        // Initialize state
         if (circulo_0 == null)
         {
             circulo_0 = transform.Find("circulo_0")?.gameObject;
-            if (debugMode && circulo_0 != null) 
-                Debug.Log("Found circulo_0 automatically", this);
         }
 
         SetTorchState(startLit, silent: true);
+    }
+
+    private void OnDestroy()
+    {
+        // Unregister when destroyed
+        if (TorchManager.Instance != null)
+        {
+            TorchManager.Instance.UnregisterTorch(isLit);
+        }
     }
 
     private void Update()
@@ -50,18 +60,8 @@ public class Antorcha : MonoBehaviour
         if (isLit == lit) return;
         isLit = lit;
 
-        // Toggle child object
-        if (circulo_0 != null)
-        {
-            circulo_0.SetActive(isLit); // Simply toggle active state
-            if (debugMode) Debug.Log($"circulo_0 active: {isLit}");
-        }
-        else if (debugMode)
-        {
-            Debug.LogWarning("circulo_0 reference is missing!", this);
-        }
-
-        // Toggle other effects
+        // Toggle visual elements
+        if (circulo_0 != null) circulo_0.SetActive(isLit);
         if (torchLight != null) torchLight.enabled = isLit;
         if (fireParticles != null)
         {
@@ -69,17 +69,20 @@ public class Antorcha : MonoBehaviour
             else fireParticles.Stop();
         }
 
+        // Play sounds
         if (!silent)
         {
             if (isLit && igniteSound != null) igniteSound.Play();
             else if (!isLit && extinguishSound != null) extinguishSound.Play();
         }
+
+        // Notify TorchManager
+        TorchManager.Instance?.TorchStateChanged(isLit);
     }
 
     private bool IsPlayerCloseEnough()
     {
         if (playerTransform == null) return false;
-        float distance = Vector3.Distance(transform.position, playerTransform.position);
-        return distance <= interactionDistance;
+        return Vector3.Distance(transform.position, playerTransform.position) <= interactionDistance;
     }
 }
