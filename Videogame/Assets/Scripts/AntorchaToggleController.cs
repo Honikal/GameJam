@@ -1,85 +1,90 @@
 using UnityEngine;
 
-public class AntorchaToggleController : MonoBehaviour
+public class Antorcha : MonoBehaviour
 {
+    [Header("Visual Effects")]
+    [SerializeField] private Light torchLight;
+    [SerializeField] private ParticleSystem fireParticles;
+    [SerializeField] private AudioSource igniteSound;
+    [SerializeField] private AudioSource extinguishSound;
+
     [Header("Settings")]
-    [SerializeField] private float interactionRadius = 2f;
-    [SerializeField] private KeyCode interactionKey = KeyCode.E;
-    
-    [Header("References")]
-    [SerializeField] private GameObject circulo_0; // The child circle to toggle
-    [SerializeField] private GameObject interactionPrompt; // "Press E" UI
-    
-    private bool playerInRange = false;
-    private CircleCollider2D interactionZone;
+    [SerializeField] private bool startLit = false;
+    [SerializeField] private KeyCode toggleKey = KeyCode.None; // Optional keyboard control
 
-    void Awake()
+    private bool isLit = false;
+    private Collider interactionCollider;
+
+    private void Awake()
     {
-        // Set up the persistent interaction zone
-        interactionZone = gameObject.AddComponent<CircleCollider2D>();
-        interactionZone.radius = interactionRadius;
-        interactionZone.isTrigger = true;
-        
-        // Make sure we have references
-        if (circulo_0 == null)
-        {
-            // Auto-find the child if not assigned
-            circulo_0 = transform.Find("circulo_0").gameObject;
-        }
-        
-        // Initialize visibility
-        UpdateVisuals();
+        interactionCollider = GetComponent<Collider>();
+        SetTorchState(startLit, silent: true);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void Update()
     {
-        if (other.CompareTag("Player"))
+        // Optional keyboard control for testing
+        if (toggleKey != KeyCode.None && Input.GetKeyDown(toggleKey))
         {
-            playerInRange = true;
-            UpdateVisuals();
+            ToggleTorch();
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    public void ToggleTorch()
     {
-        if (other.CompareTag("Player"))
+        SetTorchState(!isLit);
+    }
+
+    public void SetTorchState(bool lit, bool silent = false)
+    {
+        if (isLit == lit) return;
+
+        isLit = lit;
+
+        // Visual effects
+        if (torchLight != null) torchLight.enabled = isLit;
+        if (fireParticles != null)
         {
-            playerInRange = false;
-            UpdateVisuals();
+            if (isLit) fireParticles.Play();
+            else fireParticles.Stop();
+        }
+
+        // Audio effects
+        if (!silent)
+        {
+            if (isLit && igniteSound != null) igniteSound.Play();
+            else if (!isLit && extinguishSound != null) extinguishSound.Play();
+        }
+
+        // Notify TorchManager
+        if (TorchManager.Instance != null)
+        {
+            TorchManager.Instance.TorchStateChanged(isLit);
         }
     }
 
-    void Update()
+    // For player interaction (attach to collider)
+    private void OnMouseDown()
     {
-        if (playerInRange && Input.GetKeyDown(interactionKey))
+        if (IsPlayerCloseEnough()) // Implement your distance check
         {
-            ToggleCircle();
+            ToggleTorch();
         }
     }
 
-    void ToggleCircle()
+    private bool IsPlayerCloseEnough()
     {
-        // Toggle active state
-        circulo_0.SetActive(!circulo_0.activeSelf);
-        UpdateVisuals();
-        
-        // Play sound effect if you have one
-        // AudioManager.Instance.Play(circulo_0.activeSelf ? "On" : "Off");
+        // Implement your player distance check here
+        // Example: return Vector3.Distance(transform.position, player.transform.position) < 3f;
+        return true; // Placeholder
     }
 
-    void UpdateVisuals()
+    // For trigger-based interaction
+    private void OnTriggerEnter(Collider other)
     {
-        // Show prompt only when player is near AND circle is hidden
-        if (interactionPrompt != null)
+        if (other.CompareTag("Player") && Input.GetButtonDown("Interact"))
         {
-            interactionPrompt.SetActive(playerInRange && !circulo_0.activeSelf);
+            ToggleTorch();
         }
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        // Draw interaction radius in editor
-        Gizmos.color = new Color(1, 0.5f, 0, 0.3f); // Orange with transparency
-        Gizmos.DrawWireSphere(transform.position, interactionRadius);
     }
 }
