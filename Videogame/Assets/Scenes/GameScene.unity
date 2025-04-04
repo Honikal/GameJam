@@ -796,6 +796,10 @@ PrefabInstance:
       propertyPath: timerValue
       value: 
       objectReference: {fileID: 140029713}
+    - target: {fileID: 4547828035944374188, guid: fdb955e49d04f9941b93b1c38213cd9b, type: 3}
+      propertyPath: obstacleLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8665630673403886952, guid: fdb955e49d04f9941b93b1c38213cd9b, type: 3}
       propertyPath: m_Name
       value: Player
