@@ -139,7 +139,7 @@ public class EnemyChase : EnemyMovement
         this.enemy.patrol.Enable();
     }*/
 
-    /*private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == this.enemy.target.name)
         {
@@ -149,7 +149,7 @@ public class EnemyChase : EnemyMovement
             Invoke("EnableMovement", 3.0f);
         }
     }
-    */
+    
     private void EnableMovement()
     {
         this.enemy.EnableMovement();
