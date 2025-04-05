@@ -72,8 +72,8 @@ public class Antorcha : MonoBehaviour
         // Play sounds
         if (!silent)
         {
-            if (isLit && igniteSound != null) igniteSound.Play();
-            else if (!isLit && extinguishSound != null) extinguishSound.Play();
+            if (isLit) AudioManager.Instance.Play("IgniteTorch");
+            else if (!isLit) AudioManager.Instance.Play("IgniteTorch");
         }
 
         // Notify TorchManager

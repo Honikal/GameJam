@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
 
 public class TorchManager : MonoBehaviour
 {
     public static TorchManager Instance { get; private set; }
 
     [Header("UI References")]
-    [SerializeField] private Text torchCounterText;
+    [SerializeField] private TextMeshProUGUI torchCounterText;
     [SerializeField] private Image completionIndicator;
     [SerializeField] private Color incompleteColor = Color.red;
     [SerializeField] private Color completeColor = Color.green;

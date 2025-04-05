@@ -3724,6 +3724,20 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: IgniteTorch
+    output: {fileID: -4049995715818578261, guid: 7a54fc3a8a348ad46b0e2c9c1d5b860e, type: 2}
+    clip: {fileID: 8300000, guid: c549f6f71172494418dff1b655a8d20e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ExtinguishTorch
+    output: {fileID: -4049995715818578261, guid: 7a54fc3a8a348ad46b0e2c9c1d5b860e, type: 2}
+    clip: {fileID: 8300000, guid: 0fdf20ae98f9a4a4da96117600b8ef6b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &1198903756
 GameObject:
   m_ObjectHideFlags: 0
