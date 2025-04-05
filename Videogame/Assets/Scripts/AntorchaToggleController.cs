@@ -5,6 +5,7 @@ public class Antorcha : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform playerTransform;
     [SerializeField] private GameObject circulo_0;
+    [SerializeField] private GameObject txtInteract;
 
     [Header("Visual Effects")]
     [SerializeField] private Light torchLight;
@@ -44,6 +45,11 @@ public class Antorcha : MonoBehaviour
 
     private void Update()
     {
+        //Checamos que el jugador esté cerca de una antorcha
+        bool isCloseText = IsPlayerCloseEnough();
+        txtInteract.SetActive(isCloseText);
+
+
         if (Input.GetKeyDown(KeyCode.E) && IsPlayerCloseEnough())
         {
             ToggleTorch();

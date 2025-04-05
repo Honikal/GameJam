@@ -108,8 +108,6 @@ public class Movement : MonoBehaviour
             //Se está moviendo el jugador (fase running)
             lastDirection = roundedDirection;
 
-            Debug.Log($"Último input conseguido: {lastDirection}");
-
             animator.SetFloat("LastInputX", lastDirection.x);
             animator.SetFloat("LastInputY", lastDirection.y);
         } 
@@ -117,7 +115,7 @@ public class Movement : MonoBehaviour
         animator.SetBool("isWalking", isMoving);
         animator.SetFloat("Horizontal", lastDirection.x);
         animator.SetFloat("Vertical", lastDirection.y);
-        Debug.Log($"Movimiento actual: {lastDirection}");
+        //Debug.Log($"Movimiento actual: {lastDirection}");
     }
 
     void TryCloseEyes()
@@ -155,7 +153,7 @@ public class Movement : MonoBehaviour
         if (isMonsterInSight && !isEyesClosed)
         {
             currentHealth -= healthDrainRate * Time.deltaTime;
-            Debug.Log($"Perdemos salud, salud actual: {currentHealth}");
+            //Debug.Log($"Perdemos salud, salud actual: {currentHealth}");
         }
         //Nos encargamos de mantener la salud en los límites
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
@@ -257,6 +255,9 @@ public class Movement : MonoBehaviour
         //Ésta función se encarga de iterar todos los posibles enemigos, checamos que estén en el rango de visión
         foreach (Transform enemy in enemiesInRange)
         {
+            Debug.Log("Enemigo entra al área de chequeo");
+
+            //Debug.Log($"Index del layer de colisión: {obstacleLayers}");
             if (enemy == null) continue;
 
             //Tomamos un vector con el cual se vea la dirección entre el jugador y el enemigo
@@ -267,18 +268,24 @@ public class Movement : MonoBehaviour
             //Usamos el Raycast, para un Raycast,
             //ocupamos la ubicación del objeto que castea el rayo, la dirección del posible vector (rayo), la distancia, y los posibles obstáculos
             RaycastHit2D hit = Physics2D.Raycast(
-                transform.position, //origin,
-                dirToEnemy,         //direction,
-                distance,           //distance,
-                obstacleLayers      //layerMask
+                transform.position,         //origin,
+                dirToEnemy,                 //direction,
+                distance,                   //distance,
+                obstacleLayers              //layerMask
+            );
+
+            //Visual debug
+            Debug.DrawRay(
+                transform.position,
+                dirToEnemy * distance,
+                hit.collider ? Color.red : Color.green,
+                visionCheckInterval
             );
 
             //Checamos que el punto no tenga colisiones posibles, o que el posible punto de collisión sea el enemigo
-            if (hit.collider == null || hit.collider.CompareTag("Enemy")) {
-                return true;
-            }
-
+            return hit.collider == null;
         }
+        Debug.Log("No hay enemigos en el área");
         return false;
     }
 

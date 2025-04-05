@@ -126,7 +126,7 @@ public class EnemyChase : EnemyMovement
     {
         if (this.enemy.target != null && !this.enemy.MovementDisabled())
         {
-            Debug.Log("Moving towards target: " + this.enemy.target.name);
+            //Debug.Log("Moving towards target: " + this.enemy.target.name);
             Vector2 targetPosition = this.enemy.target.transform.position;
             Vector2 currentPosition = transform.position;
             Vector2 newPosition = Vector2.MoveTowards(currentPosition, targetPosition, this.enemy.speed * Time.deltaTime);
