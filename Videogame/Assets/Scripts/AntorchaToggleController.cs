@@ -19,6 +19,7 @@ public class Antorcha : MonoBehaviour
     [SerializeField] private bool debugMode = true;
 
     private bool isLit;
+    private bool wasCloseLastFrame;
 
     private void Start()
     {
@@ -45,12 +46,17 @@ public class Antorcha : MonoBehaviour
 
     private void Update()
     {
-        //Checamos que el jugador esté cerca de una antorcha
-        bool isCloseText = IsPlayerCloseEnough();
-        txtInteract.SetActive(isCloseText);
+        bool isClose = IsPlayerCloseEnough();
 
+        //Solo actualizar cuando el estado de proximidad cambia
+        if (isClose != wasCloseLastFrame)
+        {
+            txtInteract.SetActive(isClose);
+            wasCloseLastFrame = isClose;
+        }
 
-        if (Input.GetKeyDown(KeyCode.E) && IsPlayerCloseEnough())
+        //Check para interactuar con el objeto
+        if (isClose && Input.GetKeyDown(KeyCode.E))
         {
             ToggleTorch();
         }
@@ -79,7 +85,7 @@ public class Antorcha : MonoBehaviour
         if (!silent)
         {
             if (isLit) AudioManager.Instance.Play("IgniteTorch");
-            else if (!isLit) AudioManager.Instance.Play("IgniteTorch");
+            else if (!isLit) AudioManager.Instance.Play("ExtinguishTorch");
         }
 
         // Notify TorchManager
@@ -91,4 +97,6 @@ public class Antorcha : MonoBehaviour
         if (playerTransform == null) return false;
         return Vector3.Distance(transform.position, playerTransform.position) <= interactionDistance;
     }
+
+    
 }
