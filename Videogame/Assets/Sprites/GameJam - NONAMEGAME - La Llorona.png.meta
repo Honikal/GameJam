@@ -1,0 +1,585 @@
+fileFormatVersion: 2
+guid: 946f757c98a77244a9e8109f1462812f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5733695624012917554
+    second: GameJam - NONAMEGAME - La Llorona_0
+  - first:
+      213: 511279676162704390
+    second: GameJam - NONAMEGAME - La Llorona_1
+  - first:
+      213: -4835863980064179063
+    second: GameJam - NONAMEGAME - La Llorona_2
+  - first:
+      213: 1305502769332543358
+    second: GameJam - NONAMEGAME - La Llorona_3
+  - first:
+      213: -734612096383235038
+    second: GameJam - NONAMEGAME - La Llorona_4
+  - first:
+      213: -3901104527295546022
+    second: GameJam - NONAMEGAME - La Llorona_5
+  - first:
+      213: -2927697874040060837
+    second: GameJam - NONAMEGAME - La Llorona_6
+  - first:
+      213: -3196061456272829255
+    second: GameJam - NONAMEGAME - La Llorona_7
+  - first:
+      213: -5847094575542473730
+    second: GameJam - NONAMEGAME - La Llorona_8
+  - first:
+      213: 4212376586825664683
+    second: GameJam - NONAMEGAME - La Llorona_9
+  - first:
+      213: -2125936672687397449
+    second: GameJam - NONAMEGAME - La Llorona_10
+  - first:
+      213: 4133594293869141214
+    second: GameJam - NONAMEGAME - La Llorona_11
+  - first:
+      213: 2683316088380558455
+    second: GameJam - NONAMEGAME - La Llorona_12
+  - first:
+      213: 8115671434422721205
+    second: GameJam - NONAMEGAME - La Llorona_13
+  - first:
+      213: 7649118023708249898
+    second: GameJam - NONAMEGAME - La Llorona_14
+  - first:
+      213: -966238935261324152
+    second: GameJam - NONAMEGAME - La Llorona_15
+  - first:
+      213: -3024653015389645206
+    second: GameJam - NONAMEGAME - La Llorona_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GameJam - NONAMEGAME - La Llorona_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 224
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23b6087aacd229f40800000000000000
+      internalID: 5733695624012917554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameJam - NONAMEGAME - La Llorona_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 224
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6040e86182e681700800000000000000
+      internalID: 511279676162704390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameJam - NONAMEGAME - La Llorona_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 224
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98cfa26e45f83ecb0800000000000000
+      internalID: -4835863980064179063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameJam - NONAMEGAME - La Llorona_3
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 224
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7fda531ad31e1210800000000000000
+      internalID: 1305502769332543358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameJam - NONAMEGAME - La Llorona_4
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 225
+        width: 12
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22c4f53c0322ec5f0800000000000000
+      internalID: -734612096383235038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameJam - NONAMEGAME - La Llorona_5
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 192
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5d71e2f91e7cd9c0800000000000000
+      internalID: -3901104527295546022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameJam - NONAMEGAME - La Llorona_6
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 192
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b540d209b4abe57d0800000000000000
+      internalID: -2927697874040060837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameJam - NONAMEGAME - La Llorona_7
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 192
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b45a8af90f45a3d0800000000000000
+      internalID: -3196061456272829255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameJam - NONAMEGAME - La Llorona_8
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 192
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efb6da87672fadea0800000000000000
+      internalID: -5847094575542473730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameJam - NONAMEGAME - La Llorona_9
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 160
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba88ae5003e557a30800000000000000
+      internalID: 4212376586825664683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameJam - NONAMEGAME - La Llorona_10
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 160
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b5ed712cd72f72e0800000000000000
+      internalID: -2125936672687397449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameJam - NONAMEGAME - La Llorona_11
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 160
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edcd6ab0c1a7d5930800000000000000
+      internalID: 4133594293869141214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameJam - NONAMEGAME - La Llorona_12
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 160
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77c830cf3cd0d3520800000000000000
+      internalID: 2683316088380558455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameJam - NONAMEGAME - La Llorona_13
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 128
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ba1d82cb28a0a070800000000000000
+      internalID: 8115671434422721205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameJam - NONAMEGAME - La Llorona_14
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 128
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2f0b28d050272a60800000000000000
+      internalID: 7649118023708249898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameJam - NONAMEGAME - La Llorona_15
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 128
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88cd897ceca3792f0800000000000000
+      internalID: -966238935261324152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameJam - NONAMEGAME - La Llorona_16
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 128
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a66d2e89b164606d0800000000000000
+      internalID: -3024653015389645206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 98de3cac03fe26c4aa4fea9a7474231c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      GameJam - NONAMEGAME - La Llorona_0: 5733695624012917554
+      GameJam - NONAMEGAME - La Llorona_1: 511279676162704390
+      GameJam - NONAMEGAME - La Llorona_10: -2125936672687397449
+      GameJam - NONAMEGAME - La Llorona_11: 4133594293869141214
+      GameJam - NONAMEGAME - La Llorona_12: 2683316088380558455
+      GameJam - NONAMEGAME - La Llorona_13: 8115671434422721205
+      GameJam - NONAMEGAME - La Llorona_14: 7649118023708249898
+      GameJam - NONAMEGAME - La Llorona_15: -966238935261324152
+      GameJam - NONAMEGAME - La Llorona_16: -3024653015389645206
+      GameJam - NONAMEGAME - La Llorona_2: -4835863980064179063
+      GameJam - NONAMEGAME - La Llorona_3: 1305502769332543358
+      GameJam - NONAMEGAME - La Llorona_4: -734612096383235038
+      GameJam - NONAMEGAME - La Llorona_5: -3901104527295546022
+      GameJam - NONAMEGAME - La Llorona_6: -2927697874040060837
+      GameJam - NONAMEGAME - La Llorona_7: -3196061456272829255
+      GameJam - NONAMEGAME - La Llorona_8: -5847094575542473730
+      GameJam - NONAMEGAME - La Llorona_9: 4212376586825664683
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

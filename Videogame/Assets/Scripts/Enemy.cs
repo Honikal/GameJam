@@ -8,8 +8,7 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public Vector2 nextDirection { get; private set; }
     public Vector2 direction { get; private set; }
-    public AudioManager audio { get; private set; }
-
+    
     //public AudioClip audioClip;
     public GameObject target;
 
@@ -24,13 +23,17 @@ public class Enemy : MonoBehaviour
     private Movement playerMovement;
     private bool isTargetInside = false;
     private bool isMovementDisabled = false;
-    
 
+
+    //Animación
+    private Animator enemyAnimator;
+    private float movementThreshold = 0.1f;
+    private Vector2 lastDirection;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        this.audio = AudioManager.Instance;
+        enemyAnimator = GetComponent<Animator>();
         this.movement = this.GetComponent<Movement>();
         this.patrol = this.GetComponent<EnemyPatrol>();
         this.chase = this.GetComponent<EnemyChase>();
@@ -67,17 +70,16 @@ public class Enemy : MonoBehaviour
         
         if (isTargetInside)
         {
-            //if (!playerMovement.isEyesClosed)
-            //{
-            //Debug.Log("CHASE MODE");    
-            patrol.Disable();
-            chase.Enable();
-            EnableMovement();
-            /*}
-            else
+            if (!playerMovement.isEyesClosed) {
+                //Debug.Log("CHASE MODE");    
+                patrol.Disable();
+                chase.Enable();
+                EnableMovement();
+            } else
             {
                 DisableMovement();
-            }*/
+                Invoke("EnableMovement", 1f);
+            }
         }
         else
         {
@@ -105,6 +107,8 @@ public class Enemy : MonoBehaviour
 
             rb.MovePosition(position + translation);
         }
+
+        UpdateAnimationParameters();
     }
 
     public void SetDirection(Vector2 direction, bool forced = false)
@@ -113,6 +117,7 @@ public class Enemy : MonoBehaviour
         {
             this.direction = direction;
             nextDirection = Vector2.zero;
+            UpdateAnimationParameters();
             Debug.Log("Direction set to: " + direction);
 
         }
@@ -138,11 +143,8 @@ public class Enemy : MonoBehaviour
             if (collision.gameObject.name == target.name)
             {
                 isTargetInside = true;
-                if (audio != null)
-                {
-                    Debug.Log("Playing ghost sound");
-                    audio.Play("ghost");
-                }
+                Debug.Log("Playing ghost sound");
+                AudioManager.Instance.Play("Ghost");
                 Debug.Log("Target entered the detection collider.");
             }
         }
@@ -153,11 +155,7 @@ public class Enemy : MonoBehaviour
         if (target != null && collision.gameObject.name == target.name)
         {
             isTargetInside = false;
-            if (audio != null)
-            {
-                Debug.Log("Stopping ghost sound");
-                audio.Stop("ghost");
-            }
+            //AudioManager.Instance.Play("Ghost");
             Debug.Log("Target exited the detection collider.");           
         }
         
@@ -181,6 +179,27 @@ public class Enemy : MonoBehaviour
     public bool MovementDisabled()
     {
         return isMovementDisabled;
+    }
+
+    private void UpdateAnimationParameters()
+    {
+        Vector2 movementDirection = direction.normalized;
+        bool isActuallyMoving = rb.linearVelocity.magnitude > movementThreshold;
+
+        //Actualizamos los árboles de animación
+        enemyAnimator.SetFloat("Horizontal", movementDirection.x);
+        enemyAnimator.SetFloat("Vertical", movementDirection.y);
+
+        //Actualizamos la última dirección
+        if (isActuallyMoving)
+        {
+            lastDirection = movementDirection;
+            enemyAnimator.SetFloat("LstMoveX", lastDirection.x);
+            enemyAnimator.SetFloat("LstMoveY", lastDirection.y);
+        }
+
+        //Actualizamos el estado de animación
+        enemyAnimator.SetBool("isMoving", isActuallyMoving);
     }
 
     /*private void OnCollisionEnter2D(Collision2D collision)

@@ -40,7 +40,7 @@ public class Movement : MonoBehaviour
     private float visionCheckTimer;       //Timer para definir o checar a cada cierto tiempo la posible existencia de un enemigo en el área
     private Rigidbody2D rb;
     private CircleCollider2D visionTrigger;
-    private bool isEyesClosed { get; set; } = false;
+    public bool isEyesClosed { get; set; } = false;
     private bool isMonsterInSight { get; set; } = false;
     private bool isCooldownActive { get; set; } = false;
     private Vector2 moveDirection;

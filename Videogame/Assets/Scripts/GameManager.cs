@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private TMP_Text scoreGameOver; //Damos acceso a tanto el objeto que maneja el UI y el texto del score
     [SerializeField] private TMP_Text timeExpended;  //Damos acceso al tiempo invertido en la partida
+    [SerializeField] private TMP_Text timerSelected; //Damos acceso al tiempo invertido en la partida
+
 
     [Header("Events")]
     public UnityEvent onAllTorchesLit;
@@ -31,19 +33,8 @@ public class GameManager : MonoBehaviour
     private float cooldownToPlay = 0.5f;
     private float timerToPlay = 0f;
 
-    //Definimos eventos para modificar el puntaje y la vida
-    public event System.Action<int> OnTimeChanged;
-
-    private int _time;      //Tiempo de duración de la partida
-    public int time
-    {
-        get => _time;
-        set
-        {
-            _time = value;
-            OnTimeChanged?.Invoke(_time); //Trigger cuando la vida cambie
-        }
-    }
+    private float elapsedTime = 0f;             //Tiempo pasado de la partida
+    private bool isTimerRunning = false;        //Medidor para determinar que el tiempo pasa
 
     private void Awake()
     {
@@ -81,6 +72,13 @@ public class GameManager : MonoBehaviour
                 StartLevel();
             }
         }
+
+        //Actualizamos el timer si el juego continúa
+        if (isTimerRunning && !isGameOver)
+        {
+            elapsedTime += Time.deltaTime;
+            UpdateTimerDisplay();
+        }
     }
 
     //Función encargada de iniciar la partida por nivel
@@ -88,6 +86,8 @@ public class GameManager : MonoBehaviour
     {
         //Juego se inició
         isGameStarted = true;
+        isTimerRunning = true;
+        elapsedTime = 0f;           //Reseteamos el timer cuando se empieza el juego de nuevo
     }
 
     //Función encargada de determinar que el juego terminó
@@ -100,12 +100,12 @@ public class GameManager : MonoBehaviour
         }
 
         //Actualizamos el puntaje del game score
-        /*
-        if (scoreGameOver != null)
+        if (timeExpended != null)
         {
-            scoreGameOver.text = $"Tiempo que duraste vivo: {time}";
+            int minutes = Mathf.FloorToInt(elapsedTime / 60f);
+            int seconds = Mathf.FloorToInt(elapsedTime % 60f);
+            timeExpended.text = $"Tiempo sobrevivido: {minutes:00}:{seconds:00} s";
         }
-        */
 
         //Pausamos el juego del todo
         Time.timeScale = 0f;
@@ -144,6 +144,15 @@ public class GameManager : MonoBehaviour
         }
 
         onTorchCountChanged?.Invoke(litTorches);
+    }
+    private void UpdateTimerDisplay()
+    {
+        if (timeExpended != null)
+        {
+            int minutes = Mathf.FloorToInt(elapsedTime / 60f);
+            int seconds = Mathf.FloorToInt(elapsedTime % 60f);
+            timerSelected.text = $"{minutes:00}:{seconds:00}";
+        }
     }
 
     private void AllTorchesLit()

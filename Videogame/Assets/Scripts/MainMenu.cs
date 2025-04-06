@@ -5,6 +5,12 @@ using TMPro;
 public class MainMenu : MonoBehaviour
 {
     //Acá manejamos el código de la UI, manejamos el cambiar de escena
+    private void Start()
+    {
+        //Reproducimos la música apenas iniciar
+        AudioManager.Instance.Play("BackgroundMusic");
+    }
+
     public void PlayGame()
     {
         //Función a ejecutar cuando el juego se inicia (Ocupamos importar SceneManagement)

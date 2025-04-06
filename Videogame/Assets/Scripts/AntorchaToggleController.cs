@@ -10,8 +10,6 @@ public class Antorcha : MonoBehaviour
     [Header("Visual Effects")]
     [SerializeField] private Light torchLight;
     [SerializeField] private ParticleSystem fireParticles;
-    [SerializeField] private AudioSource igniteSound;
-    [SerializeField] private AudioSource extinguishSound;
 
     [Header("Settings")]
     [SerializeField] private bool startLit = false;
