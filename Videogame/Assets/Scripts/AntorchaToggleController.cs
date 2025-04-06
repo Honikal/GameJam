@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class Antorcha : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private Transform playerTransform;
+    [SerializeField] private GameObject circulo_0;
+
     [Header("Visual Effects")]
     [SerializeField] private Light torchLight;
     [SerializeField] private ParticleSystem fireParticles;
@@ -10,38 +14,54 @@ public class Antorcha : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] private bool startLit = false;
-    [SerializeField] private KeyCode toggleKey = KeyCode.None; // Optional keyboard control
+    [SerializeField] private float interactionDistance = 2f;
+    [SerializeField] private bool debugMode = true;
 
-    private bool isLit = false;
-    private Collider interactionCollider;
+    private bool isLit;
 
-    private void Awake()
+    private void Start()
     {
-        interactionCollider = GetComponent<Collider>();
+        // Register this torch with the manager
+        TorchManager.Instance?.RegisterTorch();
+        
+        // Initialize state
+        if (circulo_0 == null)
+        {
+            circulo_0 = transform.Find("circulo_0")?.gameObject;
+        }
+
         SetTorchState(startLit, silent: true);
+    }
+
+    private void OnDestroy()
+    {
+        // Unregister when destroyed
+        if (TorchManager.Instance != null)
+        {
+            TorchManager.Instance.UnregisterTorch(isLit);
+        }
     }
 
     private void Update()
     {
-        // Optional keyboard control for testing
-        if (toggleKey != KeyCode.None && Input.GetKeyDown(toggleKey))
+        if (Input.GetKeyDown(KeyCode.E) && IsPlayerCloseEnough())
         {
             ToggleTorch();
         }
     }
 
-    public void ToggleTorch()
+    private void ToggleTorch()
     {
         SetTorchState(!isLit);
     }
 
-    public void SetTorchState(bool lit, bool silent = false)
+    private void SetTorchState(bool lit, bool silent = false)
     {
         if (isLit == lit) return;
-
         isLit = lit;
 
-        // Visual effects
+        // Toggle visual elements
+        if (circulo_0 != null) circulo_0.SetActive(isLit);
         if (torchLight != null) torchLight.enabled = isLit;
         if (fireParticles != null)
         {
@@ -49,42 +69,20 @@ public class Antorcha : MonoBehaviour
             else fireParticles.Stop();
         }
 
-        // Audio effects
+        // Play sounds
         if (!silent)
         {
-            if (isLit && igniteSound != null) igniteSound.Play();
-            else if (!isLit && extinguishSound != null) extinguishSound.Play();
+            if (isLit) AudioManager.Instance.Play("torch");
+            else if (!isLit) AudioManager.Instance.Play("torch");
         }
 
         // Notify TorchManager
-        if (TorchManager.Instance != null)
-        {
-            TorchManager.Instance.TorchStateChanged(isLit);
-        }
-    }
-
-    // For player interaction (attach to collider)
-    private void OnMouseDown()
-    {
-        if (IsPlayerCloseEnough()) // Implement your distance check
-        {
-            ToggleTorch();
-        }
+        TorchManager.Instance?.TorchStateChanged(isLit);
     }
 
     private bool IsPlayerCloseEnough()
     {
-        // Implement your player distance check here
-        // Example: return Vector3.Distance(transform.position, player.transform.position) < 3f;
-        return true; // Placeholder
-    }
-
-    // For trigger-based interaction
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player") && Input.GetButtonDown("Interact"))
-        {
-            ToggleTorch();
-        }
+        if (playerTransform == null) return false;
+        return Vector3.Distance(transform.position, playerTransform.position) <= interactionDistance;
     }
 }

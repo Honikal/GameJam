@@ -46,11 +46,15 @@ public class Movement : MonoBehaviour
     private Vector2 moveDirection;
     private List<Transform> enemiesInRange = new List<Transform>();  //Lista de enemigos posibles
 
+    //Sección de animación
+    private Animator animator;
+    private Vector2 lastDirection;
 
     private void Start()
     {
         //Seteamos los valores iniciales
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         visionTrigger = GetComponent<CircleCollider2D>();
         currentHealth = maxHealth;
         currentClosedEyes = maxClosedEyes;
@@ -81,10 +85,41 @@ public class Movement : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
         moveDirection = new Vector2(moveX, moveY).normalized;
-        
+
+        //Llamamos al método encargado de determinar la animación respecto a el movimiento
+        AnimationHandler();
+
         //Checamos que se presione el botón space
         if (Input.GetKeyDown(KeyCode.Space)) TryCloseEyes();
         if (Input.GetKeyUp(KeyCode.Space)) OpenEyes();
+    }
+
+    void AnimationHandler()
+    {
+        //Detectamos si existe una posibilidad de movimiento
+        bool isMoving = moveDirection.magnitude > 0.1f;
+
+        if (isMoving)
+        {
+            //Tomamos el input de 8 direcciones del jugador
+            Vector2 roundedDirection = new Vector2(
+                Mathf.Round(moveDirection.x),
+                Mathf.Round(moveDirection.y)
+            );
+
+            //Se está moviendo el jugador (fase running)
+            lastDirection = roundedDirection;
+
+            Debug.Log($"Último input conseguido: {lastDirection}");
+
+            animator.SetFloat("LastInputX", lastDirection.x);
+            animator.SetFloat("LastInputY", lastDirection.y);
+        } 
+
+        animator.SetBool("isWalking", isMoving);
+        animator.SetFloat("Horizontal", lastDirection.x);
+        animator.SetFloat("Vertical", lastDirection.y);
+        Debug.Log($"Movimiento actual: {lastDirection}");
     }
 
     void TryCloseEyes()

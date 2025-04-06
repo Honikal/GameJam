@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -38,5 +39,24 @@ public class MainMenu : MonoBehaviour
 
         //Recargar la escena actual
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    //Scrolling Credits
+    public float scrollSpeed = 40f;
+    public RectTransform rectTransform;
+
+    private bool isScrool { get; set; } = false;
+
+    private void Update()
+    {
+        if (isScrool)
+        {
+            rectTransform.anchoredPosition += new Vector2(0, scrollSpeed * Time.deltaTime);
+        }
+    }
+
+    public void ScrollCredits(bool value)
+    {
+        isScrool = value;
     }
 }
