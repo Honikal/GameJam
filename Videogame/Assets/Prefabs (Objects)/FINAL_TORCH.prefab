@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2437869623705872439}
   - component: {fileID: 6816550200422734256}
   - component: {fileID: 2332917446359728549}
+  - component: {fileID: 9155523135030929269}
   m_Layer: 7
   m_Name: FINAL_TORCH
   m_TagString: Player
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.55, y: 4.07, z: 0}
-  m_LocalScale: {x: 0.17, y: 0.17, z: 0.17}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6952424407831470260}
@@ -70,17 +71,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.028656125, y: -0.05731249}
+  m_Offset: {x: 0.028657593, y: -0.1624125}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.58, y: 2.31}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.58, y: 2.31}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.49168742, y: 2.4402976}
+  m_Size: {x: 0.1882539, y: 0.6720234}
   m_EdgeRadius: 0
 --- !u!114 &2437869623705872439
 MonoBehaviour:
@@ -99,8 +100,6 @@ MonoBehaviour:
   txtInteract: {fileID: 0}
   torchLight: {fileID: 0}
   fireParticles: {fileID: 0}
-  igniteSound: {fileID: 0}
-  extinguishSound: {fileID: 0}
   startLit: 0
   interactionDistance: 2.02
   debugMode: 1
@@ -184,7 +183,7 @@ SpriteRenderer:
   m_SortingLayerID: 556121125
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 918941039524603661, guid: 0f05cc7535aeb4c46bee0fbcdbcb911d, type: 3}
+  m_Sprite: {fileID: -534601182, guid: 6659a388a66ad1040950bd4c01b939c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -193,8 +192,30 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 1
+  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &9155523135030929269
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6775134956764184507}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a8748021c198ed84e8dd801358281fcd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8935278590749876229
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +244,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 10, y: 10, z: 5.882353}
+  m_LocalScale: {x: 5, y: 5, z: 5.882353}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7569353335902810332}

@@ -823,6 +823,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 56434962}
     - target: {fileID: 4547828035944374188, guid: fdb955e49d04f9941b93b1c38213cd9b, type: 3}
+      propertyPath: eyesOpen
+      value: 
+      objectReference: {fileID: 158889573, guid: 6659a388a66ad1040950bd4c01b939c0, type: 3}
+    - target: {fileID: 4547828035944374188, guid: fdb955e49d04f9941b93b1c38213cd9b, type: 3}
       propertyPath: HealthBar
       value: 
       objectReference: {fileID: 56434961}
@@ -831,9 +835,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4547828035944374188, guid: fdb955e49d04f9941b93b1c38213cd9b, type: 3}
+      propertyPath: eyesTired
+      value: 
+      objectReference: {fileID: -16058316, guid: 6659a388a66ad1040950bd4c01b939c0, type: 3}
+    - target: {fileID: 4547828035944374188, guid: fdb955e49d04f9941b93b1c38213cd9b, type: 3}
       propertyPath: timerValue
       value: 
       objectReference: {fileID: 56434960}
+    - target: {fileID: 4547828035944374188, guid: fdb955e49d04f9941b93b1c38213cd9b, type: 3}
+      propertyPath: eyesSeeMonster
+      value: 
+      objectReference: {fileID: -585258624, guid: 6659a388a66ad1040950bd4c01b939c0, type: 3}
     - target: {fileID: 4547828035944374188, guid: fdb955e49d04f9941b93b1c38213cd9b, type: 3}
       propertyPath: obstacleLayers.m_Bits
       value: 64
@@ -1654,6 +1666,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abcfdf5b8dffc1b49a2e66d819e6b9d6, type: 3}
+--- !u!1 &1223572973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8665630673403886952, guid: fdb955e49d04f9941b93b1c38213cd9b, type: 3}
+  m_PrefabInstance: {fileID: 722518568}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1288823230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1986,6 +2003,10 @@ PrefabInstance:
       value: 914689597
       objectReference: {fileID: 0}
     - target: {fileID: 7155202713473063630, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1223572973}
+    - target: {fileID: 7155202713473063630, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
       propertyPath: initialPosition.x
       value: 9
       objectReference: {fileID: 0}
@@ -2003,7 +2024,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7508334456804259803, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9
+      value: 3.74
       objectReference: {fileID: 0}
     - target: {fileID: 7508334456804259803, guid: 8294433fa31cfc542be1ab788b954813, type: 3}
       propertyPath: m_LocalPosition.y

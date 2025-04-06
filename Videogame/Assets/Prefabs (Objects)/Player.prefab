@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6599759415245758979}
   - component: {fileID: 2651061795156703516}
   - component: {fileID: 4821549627897357555}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: circulo_0
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,6 +233,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   visionCheckInterval: 0.2
+  eyesOpen: {fileID: 0}
+  eyesTired: {fileID: 0}
+  eyesSeeMonster: {fileID: 0}
 --- !u!61 &5835792199575083647
 BoxCollider2D:
   m_ObjectHideFlags: 0

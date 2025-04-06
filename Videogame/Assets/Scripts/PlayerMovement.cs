@@ -19,7 +19,6 @@ public class Movement : MonoBehaviour
 
     //Por si tocara hacer regeneración propia, regeneración por segundo cuando los ojos están abiertos
     //[SerializeField] float eyesOpenRegenRate = 15f;
-    public AudioManager audioManager { get; private set; } //Referencia al AudioManager
 
     [Header("Referencias")]
     public TextMeshProUGUI timerValue;
@@ -40,6 +39,7 @@ public class Movement : MonoBehaviour
     private float visionCheckTimer;       //Timer para definir o checar a cada cierto tiempo la posible existencia de un enemigo en el área
     private Rigidbody2D rb;
     private CircleCollider2D visionTrigger;
+    private SpriteRenderer sp;
     public bool isEyesClosed { get; set; } = false;
     private bool isMonsterInSight { get; set; } = false;
     private bool isCooldownActive { get; set; } = false;
@@ -47,6 +47,12 @@ public class Movement : MonoBehaviour
     private List<Transform> enemiesInRange = new List<Transform>();  //Lista de enemigos posibles
 
     //Sección de animación
+    [Header("Animación")]
+    [SerializeField] Sprite eyesOpen;
+    [SerializeField] Sprite eyesTired;
+    [SerializeField] Sprite eyesSeeMonster;
+    private float tiredThreshold = 0.4f;
+    private float recoveredThreshold = 0.7f;
     private Animator animator;
     private Vector2 lastDirection;
 
@@ -54,11 +60,11 @@ public class Movement : MonoBehaviour
     {
         //Seteamos los valores iniciales
         rb = GetComponent<Rigidbody2D>();
+        sp = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         visionTrigger = GetComponent<CircleCollider2D>();
         currentHealth = maxHealth;
         currentClosedEyes = maxClosedEyes;
-        this.audioManager = AudioManager.Instance;
 
         //Calculamos el rango de pérdida de sanidad basado en el tiempo deseado
         healthDrainRate = maxHealth / healthDuration;
@@ -155,7 +161,7 @@ public class Movement : MonoBehaviour
         if (isMonsterInSight && !isEyesClosed)
         {
             currentHealth -= healthDrainRate * Time.deltaTime;
-            //Debug.Log($"Perdemos salud, salud actual: {currentHealth}");
+            Debug.Log($"Perdemos salud, salud actual: {currentHealth}");
         }
 
         //Agregamos un check de vida como tal
@@ -222,12 +228,13 @@ public class Movement : MonoBehaviour
         float normalizedSight = currentClosedEyes / maxClosedEyes;
         float normalizedHealth = currentHealth / maxHealth;
 
-        //Debug.Log($"Tamaño a pintar del campo de salud: {normalizedHealth}");
+        Debug.Log($"UI ACTUALIZADO Tamaño a pintar del campo de salud: {normalizedHealth}");
         EyesBar.fillAmount = normalizedSight;
         HealthBar.fillAmount = normalizedHealth;
 
         //Actualizamos la medida de los ojos
         EyesUI();
+        EyesSprite();
     }
 
     private void EyesUI()
@@ -245,6 +252,19 @@ public class Movement : MonoBehaviour
         }
     }
 
+    private void EyesSprite()
+    {
+        if (isMonsterInSight)
+        {
+            sp.sprite = eyesSeeMonster;
+        } else if (currentClosedEyes <= tiredThreshold)
+        {
+            sp.sprite = eyesTired;
+        } else if (currentClosedEyes >= recoveredThreshold)
+        {
+            sp.sprite = eyesOpen;
+        }
+    }
 
     //Update Vision Check
     private void UpdateVisionCheck()
@@ -301,7 +321,7 @@ public class Movement : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
 
-            audioManager.Play("gasp");
+            AudioManager.Instance.Play("Gasp");
             //Agregamos el enemigo a la lista de objetos por checar
             enemiesInRange.Add(collision.transform);
         }

@@ -10,6 +10,7 @@ public class Antorcha : MonoBehaviour
     [Header("Visual Effects")]
     [SerializeField] private Light torchLight;
     [SerializeField] private ParticleSystem fireParticles;
+    private Animator torchAnimation;
 
     [Header("Settings")]
     [SerializeField] private bool startLit = false;
@@ -21,6 +22,9 @@ public class Antorcha : MonoBehaviour
 
     private void Start()
     {
+        //Extraemos al animador
+        torchAnimation = GetComponent<Animator>();
+
         // Register this torch with the manager
         GameManager.Instance?.RegisterTorch();
         
@@ -31,6 +35,7 @@ public class Antorcha : MonoBehaviour
         }
 
         SetTorchState(startLit, silent: true);
+
     }
 
     private void OnDestroy()
@@ -80,14 +85,14 @@ public class Antorcha : MonoBehaviour
         }
 
         // Play sounds
-        if (!silent)
-        {
-            if (isLit) AudioManager.Instance.Play("IgniteTorch");
-            else if (!isLit) AudioManager.Instance.Play("ExtinguishTorch");
-        }
+        if (isLit) AudioManager.Instance.Play("IgniteTorch");
+        else if (!isLit) AudioManager.Instance.Play("ExtinguishTorch");
 
         // Notify TorchManager
         GameManager.Instance?.TorchStateChanged(isLit);
+
+        //Actualizamos la animación
+        torchAnimation.SetBool("isLit", isLit);
     }
 
     private bool IsPlayerCloseEnough()
