@@ -1,11 +1,8 @@
 
 using System;
-using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using static UnityEngine.Rendering.DebugUI;
-using NUnit.Framework;
 using System.Collections.Generic;
 
 public class Movement : MonoBehaviour
