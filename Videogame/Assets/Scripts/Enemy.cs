@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public Vector2 nextDirection { get; private set; }
     public Vector2 direction { get; private set; }
+    public AudioManager audio { get; private set; }
+
+    //public AudioClip audioClip;
     public GameObject target;
 
     public Vector2 initialPosition;
@@ -27,6 +30,7 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        this.audio = AudioManager.Instance;
         this.movement = this.GetComponent<Movement>();
         this.patrol = this.GetComponent<EnemyPatrol>();
         this.chase = this.GetComponent<EnemyChase>();
@@ -47,6 +51,7 @@ public class Enemy : MonoBehaviour
     {
         transform.position = initialPosition;
         direction = initialDirection;
+        //audio.sounds[0] = audioClip;
         chase.Disable();
         patrol.Enable();
     }
@@ -133,21 +138,27 @@ public class Enemy : MonoBehaviour
             if (collision.gameObject.name == target.name)
             {
                 isTargetInside = true;
+                if (audio != null)
+                {
+                    Debug.Log("Playing ghost sound");
+                    audio.Play("ghost");
+                }
                 Debug.Log("Target entered the detection collider.");
             }
         }
-        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (target != null)
+        if (target != null && collision.gameObject.name == target.name)
         {
-            if (collision.gameObject.name == target.name)
+            isTargetInside = false;
+            if (audio != null)
             {
-                isTargetInside = false;
-                Debug.Log("Target exited the detection collider.");
+                Debug.Log("Stopping ghost sound");
+                audio.Stop("ghost");
             }
+            Debug.Log("Target exited the detection collider.");           
         }
         
     }
