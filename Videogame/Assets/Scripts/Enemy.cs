@@ -57,6 +57,11 @@ public class Enemy : MonoBehaviour
         //audio.sounds[0] = audioClip;
         chase.Disable();
         patrol.Enable();
+
+        //Actualizamos para la animación
+        lastDirection = initialDirection.normalized;
+        enemyAnimator.SetFloat("LstMoveX", lastDirection.x);
+        enemyAnimator.SetFloat("LstMoveY", lastDirection.y);
     }
 
     // Update is called once per frame
@@ -64,6 +69,7 @@ public class Enemy : MonoBehaviour
     {
         if (isMovementDisabled)
         {
+            //El enemigo se detiene
             rb.linearVelocity = Vector2.zero;
             return;
         }
@@ -98,7 +104,10 @@ public class Enemy : MonoBehaviour
         if (isMovementDisabled)
         {
             rb.linearVelocity = Vector2.zero;
-            
+            //Guardamos la última dirección antes de parar
+            lastDirection = direction.normalized;
+            UpdateAnimationParameters();
+            return;
         }
         else
         {
@@ -108,6 +117,7 @@ public class Enemy : MonoBehaviour
             rb.MovePosition(position + translation);
         }
 
+        //Siempre actualizar los parámetros de animación
         UpdateAnimationParameters();
     }
 
@@ -117,9 +127,8 @@ public class Enemy : MonoBehaviour
         {
             this.direction = direction;
             nextDirection = Vector2.zero;
-            UpdateAnimationParameters();
             Debug.Log("Direction set to: " + direction);
-
+            UpdateAnimationParameters();
         }
         else
         {
@@ -155,7 +164,7 @@ public class Enemy : MonoBehaviour
         if (target != null && collision.gameObject.name == target.name)
         {
             isTargetInside = false;
-            //AudioManager.Instance.Play("Ghost");
+            AudioManager.Instance.Stop("Ghost");
             Debug.Log("Target exited the detection collider.");           
         }
         
@@ -183,22 +192,36 @@ public class Enemy : MonoBehaviour
 
     private void UpdateAnimationParameters()
     {
-        Vector2 movementDirection = direction.normalized;
+        //Primero, objtenemos la dirección del movimiento de velocidad
+
+        Vector2 actualMovement = rb.linearVelocity.normalized;
         bool isActuallyMoving = rb.linearVelocity.magnitude > movementThreshold;
 
-        //Actualizamos los árboles de animación
-        enemyAnimator.SetFloat("Horizontal", movementDirection.x);
-        enemyAnimator.SetFloat("Vertical", movementDirection.y);
+        //Usamos un Vector de 8 direcciones para hacer las animaciones más suave
+        Vector2 roundedDirection = new Vector2(
+            Mathf.Round(actualMovement.x),
+            Mathf.Round(actualMovement.y)
+        );
 
-        //Actualizamos la última dirección
+        //Actualizamos los árboles de animación de movimiento
+        enemyAnimator.SetFloat("Horizontal", roundedDirection.x);
+        enemyAnimator.SetFloat("Vertical", roundedDirection.y);
+
+        //Actualizamos la última dirección de movimiento
+
         if (isActuallyMoving)
         {
-            lastDirection = movementDirection;
-            enemyAnimator.SetFloat("LstMoveX", lastDirection.x);
-            enemyAnimator.SetFloat("LstMoveY", lastDirection.y);
+            //Nos movemos, tenemos que actualizar constantemente la última dirección por la cual nos movimos
+            lastDirection = roundedDirection;
+            enemyAnimator.SetFloat("LstMoveX", roundedDirection.x);
+            enemyAnimator.SetFloat("LstMoveY", roundedDirection.y);
+        } else
+        {
+            //Mantenemos la última dirección estando idle
+            enemyAnimator.SetFloat("Horizontal", lastDirection.x);
+            enemyAnimator.SetFloat("Vertical", lastDirection.y);
         }
 
-        //Actualizamos el estado de animación
         enemyAnimator.SetBool("isMoving", isActuallyMoving);
     }
 

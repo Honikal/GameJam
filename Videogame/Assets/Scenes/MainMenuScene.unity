@@ -4014,7 +4014,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Name of the game
+  m_text: HEART BLIND
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d6bf03bf0631c8442aa5599b0c106aab, type: 2}
   m_sharedMaterial: {fileID: -4305332473738221734, guid: d6bf03bf0631c8442aa5599b0c106aab, type: 2}
@@ -5880,8 +5880,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "PROGRAMADORES\nHonikal\n\nDISE\xD1ADOR\n\nFONTS\nKenney Fonts\n\nSOUNDS\nChiptone
-    by SFBGames"
+  m_text: "PROGRAMADORES\nHonikal\nMWGH\n\nDISE\xD1ADOR\nAbogantes Alonso\n\nFONTS\nKenney
+    Fonts\n\nSOUNDS\nChiptone by SFBGames"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d6bf03bf0631c8442aa5599b0c106aab, type: 2}
   m_sharedMaterial: {fileID: -4305332473738221734, guid: d6bf03bf0631c8442aa5599b0c106aab, type: 2}

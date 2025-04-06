@@ -113,10 +113,12 @@ public class EnemyChase : EnemyMovement
             {
                 availableDirections.Add(direction);
             }
+            /*
             else
             {
                 Debug.Log("Direction " + direction + " is blocked by " + hits[0].collider.name);
             }
+            */
         }
 
         return availableDirections;
@@ -143,7 +145,7 @@ public class EnemyChase : EnemyMovement
     {
         if (collision.gameObject.name == this.enemy.target.name)
         {
-            Debug.Log("Collision with target, disabling movement.");
+            //Debug.Log("Collision with target, disabling movement.");
             this.enemy.DisableMovement();
 
             Invoke("EnableMovement", 3.0f);
