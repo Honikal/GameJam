@@ -19,6 +19,7 @@ public class Movement : MonoBehaviour
 
     //Por si tocara hacer regeneración propia, regeneración por segundo cuando los ojos están abiertos
     //[SerializeField] float eyesOpenRegenRate = 15f;
+    public AudioManager audioManager { get; private set; } //Referencia al AudioManager
 
     [Header("Referencias")]
     public TextMeshProUGUI timerValue;
@@ -53,6 +54,7 @@ public class Movement : MonoBehaviour
         visionTrigger = GetComponent<CircleCollider2D>();
         currentHealth = maxHealth;
         currentClosedEyes = maxClosedEyes;
+        this.audioManager = AudioManager.Instance;
 
         //Calculamos el rango de pérdida de sanidad basado en el tiempo deseado
         healthDrainRate = maxHealth / healthDuration;
@@ -79,7 +81,7 @@ public class Movement : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
         moveDirection = new Vector2(moveX, moveY).normalized;
-
+        
         //Checamos que se presione el botón space
         if (Input.GetKeyDown(KeyCode.Space)) TryCloseEyes();
         if (Input.GetKeyUp(KeyCode.Space)) OpenEyes();
@@ -253,6 +255,8 @@ public class Movement : MonoBehaviour
         //Primero checamos que el valor con el que chocamos es el monstruo
         if (collision.CompareTag("Enemy"))
         {
+
+            audioManager.Play("gasp");
             //Agregamos el enemigo a la lista de objetos por checar
             enemiesInRange.Add(collision.transform);
         }
