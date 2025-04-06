@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
         {
             //if (!playerMovement.isEyesClosed)
             //{
-            Debug.Log("CHASE MODE");    
+            //Debug.Log("CHASE MODE");    
             patrol.Disable();
             chase.Enable();
             EnableMovement();
@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            Debug.Log("PATROL MODE");
+            //Debug.Log("PATROL MODE");
             chase.Disable();
             patrol.Enable();
             EnableMovement();     
@@ -165,7 +165,7 @@ public class Enemy : MonoBehaviour
 
     public void DisableMovement()
     {
-        Debug.Log("Movement disabled");
+        //Debug.Log("Movement disabled");
         isMovementDisabled = true;
         rb.linearVelocity = Vector2.zero; 
         rb.bodyType = RigidbodyType2D.Kinematic; 
@@ -173,7 +173,7 @@ public class Enemy : MonoBehaviour
 
     public void EnableMovement()
     {
-        Debug.Log("Movement enabled");
+        //Debug.Log("Movement enabled");
         isMovementDisabled = false;
         rb.bodyType = RigidbodyType2D.Dynamic; 
     }

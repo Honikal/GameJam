@@ -5,6 +5,7 @@ public class Antorcha : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform playerTransform;
     [SerializeField] private GameObject circulo_0;
+    [SerializeField] private GameObject txtInteract;
 
     [Header("Visual Effects")]
     [SerializeField] private Light torchLight;
@@ -18,11 +19,12 @@ public class Antorcha : MonoBehaviour
     [SerializeField] private bool debugMode = true;
 
     private bool isLit;
+    private bool wasCloseLastFrame;
 
     private void Start()
     {
         // Register this torch with the manager
-        TorchManager.Instance?.RegisterTorch();
+        GameManager.Instance?.RegisterTorch();
         
         // Initialize state
         if (circulo_0 == null)
@@ -36,15 +38,25 @@ public class Antorcha : MonoBehaviour
     private void OnDestroy()
     {
         // Unregister when destroyed
-        if (TorchManager.Instance != null)
+        if (GameManager.Instance != null)
         {
-            TorchManager.Instance.UnregisterTorch(isLit);
+            GameManager.Instance.UnregisterTorch(isLit);
         }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && IsPlayerCloseEnough())
+        bool isClose = IsPlayerCloseEnough();
+
+        //Solo actualizar cuando el estado de proximidad cambia
+        if (isClose != wasCloseLastFrame)
+        {
+            txtInteract.SetActive(isClose);
+            wasCloseLastFrame = isClose;
+        }
+
+        //Check para interactuar con el objeto
+        if (isClose && Input.GetKeyDown(KeyCode.E))
         {
             ToggleTorch();
         }
@@ -72,12 +84,12 @@ public class Antorcha : MonoBehaviour
         // Play sounds
         if (!silent)
         {
-            if (isLit) AudioManager.Instance.Play("torch");
-            else if (!isLit) AudioManager.Instance.Play("torch");
+            if (isLit) AudioManager.Instance.Play("IgniteTorch");
+            else if (!isLit) AudioManager.Instance.Play("ExtinguishTorch");
         }
 
         // Notify TorchManager
-        TorchManager.Instance?.TorchStateChanged(isLit);
+        GameManager.Instance?.TorchStateChanged(isLit);
     }
 
     private bool IsPlayerCloseEnough()
@@ -85,4 +97,6 @@ public class Antorcha : MonoBehaviour
         if (playerTransform == null) return false;
         return Vector3.Distance(transform.position, playerTransform.position) <= interactionDistance;
     }
+
+    
 }
