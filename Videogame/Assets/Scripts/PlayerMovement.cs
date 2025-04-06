@@ -155,6 +155,13 @@ public class Movement : MonoBehaviour
             currentHealth -= healthDrainRate * Time.deltaTime;
             //Debug.Log($"Perdemos salud, salud actual: {currentHealth}");
         }
+
+        //Agregamos un check de vida como tal
+        if (currentHealth <= 0 && !GameManager.Instance.AllTorchesAreLit)
+        {
+            GameManager.Instance.PlayerDied();
+        }
+
         //Nos encargamos de mantener la salud en los límites
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
     }
@@ -255,9 +262,6 @@ public class Movement : MonoBehaviour
         //Ésta función se encarga de iterar todos los posibles enemigos, checamos que estén en el rango de visión
         foreach (Transform enemy in enemiesInRange)
         {
-            Debug.Log("Enemigo entra al área de chequeo");
-
-            //Debug.Log($"Index del layer de colisión: {obstacleLayers}");
             if (enemy == null) continue;
 
             //Tomamos un vector con el cual se vea la dirección entre el jugador y el enemigo
@@ -285,7 +289,6 @@ public class Movement : MonoBehaviour
             //Checamos que el punto no tenga colisiones posibles, o que el posible punto de collisión sea el enemigo
             return hit.collider == null;
         }
-        Debug.Log("No hay enemigos en el área");
         return false;
     }
 

@@ -24,7 +24,7 @@ public class Antorcha : MonoBehaviour
     private void Start()
     {
         // Register this torch with the manager
-        TorchManager.Instance?.RegisterTorch();
+        GameManager.Instance?.RegisterTorch();
         
         // Initialize state
         if (circulo_0 == null)
@@ -38,9 +38,9 @@ public class Antorcha : MonoBehaviour
     private void OnDestroy()
     {
         // Unregister when destroyed
-        if (TorchManager.Instance != null)
+        if (GameManager.Instance != null)
         {
-            TorchManager.Instance.UnregisterTorch(isLit);
+            GameManager.Instance.UnregisterTorch(isLit);
         }
     }
 
@@ -89,7 +89,7 @@ public class Antorcha : MonoBehaviour
         }
 
         // Notify TorchManager
-        TorchManager.Instance?.TorchStateChanged(isLit);
+        GameManager.Instance?.TorchStateChanged(isLit);
     }
 
     private bool IsPlayerCloseEnough()
